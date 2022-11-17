@@ -1,0 +1,26 @@
+{
+"space":
+{
+"sizex":100,
+"sizey":100,
+"sizez":100,
+"neighborhood_type":"N",
+"cell_shape":"r",
+"optymalization_type":"CA",
+"boundary":"a"
+},
+"n_start_seeds":100,
+"save_start_file_name":"start.json",
+"save_results_file_name":"results.json",
+"save_time_file_name":"time.json",
+
+"load_file_name":"start.json",
+
+"save_results_file_name_2": "resultsMC.json",
+"save_start": false,
+"save_results":false,
+"save_time":false,
+"load_start":false,
+"show": false,
+"steps": 10
+}
