@@ -3,7 +3,7 @@
 {
 "sizex":100,
 "sizey":100,
-"sizez":100,
+"sizez":1,
 "neighborhood_type":"N",
 "cell_shape":"r",
 "optymalization_type":"CA",

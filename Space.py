@@ -9,8 +9,8 @@ def most_frequent(List):
     return occurence_count.most_common(1)[0][0]
 
 class Space:
-    def __init__(self, sizex=1, sizey=1, sizez=1, neighborhood_type="M", cell_shape="r", boundary="a", optymalization_type="CA"):
-        self.boundary = boundary
+    def __init__(self, sizex=1, sizey=1, sizez=1, neighborhood_type="M", cell_shape="r", boundary_type="a", optymalization_type="CA"):
+        self.boundary_type = boundary_type
         self.neighborhood_type = neighborhood_type
         self.dimention = (sizex, sizey, sizez)
         self.cell_shape = cell_shape
@@ -82,17 +82,17 @@ class Space:
     def neighborhood_3d_M(self, x, y, z, space3d):
         val, neighborhood = self.neighborhood_2d_M(x, y, space3d[:, :, z])
         if z == 0:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 behind_val, behind_nieghborhood = 0, []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 behind_val, behind_nieghborhood = self.neighborhood_2d_M(x, y, space3d[:, :, self.dimention[2]-1])
 
         else:
             behind_val, behind_nieghborhood = self.neighborhood_2d_M(x, y, space3d[:, :, z - 1])
         if z == self.dimention[2]-1:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 under_val, under_nieghborhood = 0, []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 under_val, under_nieghborhood = self.neighborhood_2d_M(x, y, space3d[:, :, 0])
         else:
                 under_val, under_nieghborhood = self.neighborhood_2d_M(x, y, space3d[:, :, z + 1])
@@ -104,17 +104,17 @@ class Space:
     def neighborhood_3d_N(self, x, y, z, space3d):
         val, neighborhood = self.neighborhood_2d_N(x, y, space3d[:, :, z])
         if z == 0:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 behind_val, behind_nieghborhood = 0, []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 behind_val, behind_nieghborhood = space3d[x, y, self.dimention[2]-1]
 
         else:
             behind_val, behind_nieghborhood = space3d[x, y, z - 1]
         if z == self.dimention[2]-1:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 under_val, under_nieghborhood = 0, []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 under_val, under_nieghborhood = space3d[x, y, 0]
         else:
                 under_val, under_nieghborhood = space3d[x, y, z + 1]
@@ -127,16 +127,16 @@ class Space:
         val, neighborhood = self.neighborhood_1d(x, matrix[:, y])
 
         if y == 0:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 behind_val, behind_nieghborhood = 0, []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 behind_val, behind_nieghborhood = self.neighborhood_1d(x, matrix[:, self.dimention[1]-1])
         else:
             behind_val, behind_nieghborhood = self.neighborhood_1d(x, matrix[:, y-1])
         if y == self.dimention[1] - 1:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 under_val, under_nieghborhood = 0, []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 under_val, under_nieghborhood = self.neighborhood_1d(x, matrix[:, 0])
 
         else:
@@ -149,16 +149,16 @@ class Space:
         val, neighborhood = self.neighborhood_1d(x, matrix[:, y])
 
         if y == 0:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 behind_val, behind_nieghborhood = 0, []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 behind_val, behind_nieghborhood = matrix[x, self.dimention[1]-1]
         else:
             behind_val, behind_nieghborhood = matrix[x, y-1]
         if y == self.dimention[1] - 1:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 under_val, under_nieghborhood = 0, []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 under_val, under_nieghborhood = matrix[x, 0]
 
         else:
@@ -171,17 +171,17 @@ class Space:
         neighborhood = []
         val = line[x]
         if x == 0:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 neighborhood += []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 neighborhood += [line[self.dimention[0]-1]]
         else:
             neighborhood += [line[x - 1]]
 
         if x == self.dimention[0] - 1:
-            if self.boundary == "a":
+            if self.boundary_type == "a":
                 neighborhood += []
-            if self.boundary == "p":
+            if self.boundary_type == "p":
                 neighborhood += [line[0]]
         else:
             neighborhood += [line[x + 1]]
@@ -215,7 +215,8 @@ class Space:
         else:
             return val
 
-
+    def find_boundary(self):
+        return True
 
 
 

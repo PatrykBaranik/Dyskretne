@@ -1,0 +1,26 @@
+{
+"space":
+{
+"sizex":100,
+"sizey":100,
+"sizez":1,
+"neighborhood_type":"M",
+"cell_shape":"r",
+"optymalization_type":"MC",
+"boundary_type":"a"
+},
+"n_start_seeds": 5,
+"save_start_file_name":"start",
+"save_results_file_name":"results",
+"save_time_file_name":"time",
+
+"load_file_name":"resultsconf2d100.json",
+
+"save_results_file_name_2": "resultsMC",
+"save_start": true,
+"save_results":true,
+"save_time":true,
+"load_start":true,
+"show": true,
+"steps": 10
+}
